@@ -1,0 +1,36 @@
+.backgound {
+    background: linear-gradient(to bottom, transparent, azure), url("../img/bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.img-hover-zoom {
+    height: 300px;
+}
+
+.img-hover-zoom img {
+    transition: transform .5s ease;
+}
+
+.img-hover-zoom img:hover {
+    transform: scale(1.2);
+}
+
+.anim {
+    animation: move_left 3s ease-out;
+}
+
+@keyframes move_left {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    80% {
+        transform: translateX(10%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
