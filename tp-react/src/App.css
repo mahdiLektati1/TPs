@@ -13,3 +13,21 @@ a {
   color: #333333;
   text-decoration: none;
 }
+
+.img__hover_zoom {
+    transition: transform .5s ease;
+    animation: move_left 2s ease;
+}
+
+.img__hover_zoom:hover {
+    transform: scale(1.1);
+}
+
+@keyframes move_left {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
