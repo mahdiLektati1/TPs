@@ -9,6 +9,18 @@ class Deck extends Component {
         this.props.handleSelectCard(card);
     }
 
+    counter() {
+        return this.props.handlecountCardsSelected();
+    }
+
+    validateDeck() {
+        return this.counter() >= 20 ? true : false;
+    }
+
+    showValidate() {
+        return this.validateDeck() ? <button type="button" className="btn btn-primary mt-2">J'ai fini!</button> : "";
+    }
+
     render(){
         return(
             <div className="Deck">
@@ -16,7 +28,7 @@ class Deck extends Component {
                     <div class="row">
                         <div className="col-6">
                             <h1>Champions disponibles</h1>
-                            <div class="row">
+                            <div className = "row" >
                                 { this.props.cards.map(card => 
                                     <Cards 
                                         card = { card }
@@ -27,10 +39,22 @@ class Deck extends Component {
                             </div>
                         </div>
                         <div className="col-6 bg-secondary rounded">
-                            <h1 className="text-white">Mon deck</h1>
-                            < Target 
-                                choices = { this.props.choices }
-                            />
+                            <div className="row text-center">
+                                <div className = "col-4 text-center">
+                                    <h1 className="text-white">Mon deck</h1>
+                                </div>
+                                <div className = "col-4 text-center">
+                                    <h1>  {this.counter()}  </h1>
+                                </div>
+                                <div className = "col-4 text-center">
+                                    { this.showValidate() }
+                                </div>
+                                <div className = "pl-2 pr-1">
+                                    <Target 
+                                        choices = { this.props.choices }
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

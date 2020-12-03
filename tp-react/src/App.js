@@ -31,6 +31,10 @@ class App extends Component {
         });
         
     }
+
+    countCardsSelected() {
+        return this.state.choices.length;
+    }
     
     render() {
         return ( 
@@ -40,6 +44,7 @@ class App extends Component {
                     cards = { this.state.cards } 
                     handleSelectCard = { this.selectCard.bind(this) }
                     choices = { this.state.choices }
+                    handlecountCardsSelected = { this.countCardsSelected.bind(this) }
                 />
             </div>
         );
