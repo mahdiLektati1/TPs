@@ -5,8 +5,8 @@ import '../App.css';
 
 class Deck extends Component {
 
-    onDeleteCard(card) {
-        this.props.handleDeleteCard(card);
+    onSelectCard(card) {
+        this.props.handleSelectCard(card);
     }
 
     render(){
@@ -20,7 +20,7 @@ class Deck extends Component {
                                 { this.props.cards.map(card => 
                                     <Cards 
                                         card = { card }
-                                        onDeleteCard = { this.onDeleteCard.bind(this) }
+                                        onSelectCard = { this.onSelectCard.bind(this) }
                                         currentCard = { card }
                                     />
                                 )}
@@ -28,7 +28,9 @@ class Deck extends Component {
                         </div>
                         <div className="col-6 bg-secondary rounded">
                             <h1 className="text-white">Mon deck</h1>
-                            <Target />
+                            < Target 
+                                choices = { this.props.choices }
+                            />
                         </div>
                     </div>
                 </div>

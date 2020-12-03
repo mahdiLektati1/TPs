@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import Cards from './Cards';
 
 class Target extends Component {
 
     render(){
         return (
-            <div>
-                
+            <div class ="row">
+                {
+                    this.props.choices.map(card =>
+                        <Cards 
+                            card = { card }
+                        />
+                )} 
             </div>
         )
     }
