@@ -31,3 +31,7 @@ a {
         opacity: 1;
     }
 }
+
+.card {
+  cursor: pointer;
+}

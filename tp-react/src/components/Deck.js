@@ -5,6 +5,10 @@ import '../App.css';
 
 class Deck extends Component {
 
+    onDeleteCard(card) {
+        this.props.handleDeleteCard(card);
+    }
+
     render(){
         return(
             <div className="Deck">
@@ -14,7 +18,11 @@ class Deck extends Component {
                             <h1>Champions disponibles</h1>
                             <div class="row">
                                 { this.props.cards.map(card => 
-                                    <Cards card={card} />
+                                    <Cards 
+                                        card = { card }
+                                        onDeleteCard = { this.onDeleteCard.bind(this) }
+                                        currentCard = { card }
+                                    />
                                 )}
                             </div>
                         </div>

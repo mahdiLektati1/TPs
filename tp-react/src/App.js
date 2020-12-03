@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { without } from'lodash';
+import Header from './components/Header';
 import Deck from './components/Deck';
 import './App.css';
 
 class App extends Component {
 
     state = {
-        cards: []
+        cards: [],
+        Counter: 0
     }
 
     componentDidMount() {
@@ -18,14 +21,21 @@ class App extends Component {
             })
     }
     
-
+    deleteCard(card) {
+        const cards = without(this.state.cards, card);
+        this.setState({
+            cards
+        });
+    }
+    
     render() {
         return ( 
             <div className = "App">
-                <nav className="navbar navbar-dark bg-dark">
-                    <span className="navbar-brand mb-0 h1">League of stones</span>
-                </nav>
-                <Deck cards = {this.state.cards} />
+                <Header />
+                <Deck 
+                    cards = { this.state.cards } 
+                    handleDeleteCard = { this.deleteCard.bind(this) }
+                />
             </div>
         );
     }
