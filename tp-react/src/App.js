@@ -8,7 +8,7 @@ class App extends Component {
 
     state = {
         cards: [],
-        Counter: 0
+        choices: [],
     }
 
     componentDidMount() {
@@ -21,11 +21,15 @@ class App extends Component {
             })
     }
     
-    deleteCard(card) {
+    selectCard(card) {
         const cards = without(this.state.cards, card);
+        const newArray = this.state.choices.slice();
+        newArray.push(card);
         this.setState({
-            cards
+            cards: cards,
+            choices: newArray
         });
+        
     }
     
     render() {
@@ -34,7 +38,8 @@ class App extends Component {
                 <Header />
                 <Deck 
                     cards = { this.state.cards } 
-                    handleDeleteCard = { this.deleteCard.bind(this) }
+                    handleSelectCard = { this.selectCard.bind(this) }
+                    choices = { this.state.choices }
                 />
             </div>
         );
