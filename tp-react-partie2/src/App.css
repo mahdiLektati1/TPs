@@ -1,1 +1,28 @@
 
+.App {
+    background-image: url(Images/bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.SignIn {
+    height: 100vh;
+}
+
+.SignUp {
+    height: 100vh;
+}
+
+.form_inscription, .form_connection {
+    background: #f7dc6f;
+}
+
+.form_inscription_btn, .form_connect_btn {
+    background: #5d6d7e;
+}
+
+.form_inscription_btn:hover, .form_connect_btn:hover {
+    background: #d35400 ;
+}
