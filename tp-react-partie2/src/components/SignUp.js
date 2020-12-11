@@ -3,11 +3,12 @@ import { Form, Field } from 'react-final-form';
 import { Link } from "react-router-dom";
 
 class SignUp extends React.Component {
-
+    
     state = {
         isEmailValid: false
     }
-    
+
+
   render() {
     if (this.state.isEmailValid) {
         return (
@@ -22,31 +23,31 @@ class SignUp extends React.Component {
                     <div className="row mt-4">
                         <div className="col-4"></div>
                         <div className="col-lg-4 col-offset-6 centered rounded p-4 form_inscription">
-                            <Form onSubmit={ formObj => 
-                                fetch('https://los.ling.fr/user', {
-                                    method: 'PUT',
-                                    headers: {
-                                        'Accept': 'application/json',
-                                        'Content-Type': 'application/json'
+                            <Form onSubmit={ formObj =>
+                                    fetch('https://los.ling.fr/user', {
+                                        method: 'PUT',
+                                        headers: {
+                                            'Accept': 'application/json',
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body:JSON.stringify({
+                                            "name": formObj.Pseudo,
+                                            "email": formObj.Email,
+                                            "password": formObj.Password
+                                        })
+                                    })
+                                    .then(res => res.json())
+                                    .then((result) => {
+                                        this.setState({
+                                            isEmailValid: true
+                                        })
+                                        
                                     },
-                                    body:JSON.stringify({
-                                        "name": formObj.Pseudo,
-                                        "email": formObj.Email,
-                                        "password": formObj.Password
+                                    (error)=>{
+                                        this.setState({
+                                            isEmailValid: false
+                                        })
                                     })
-                                })
-                                .then(res => res.json())
-                                .then((result) => {
-                                    this.setState({
-                                        isEmailValid: true
-                                    })
-                                    
-                                },
-                                (error)=>{
-                                    this.setState({
-                                        isEmailValid: false
-                                    })
-                                })
                             }>
                             {({ handleSubmit}) => (
                                 <form onSubmit={handleSubmit}>
@@ -70,13 +71,13 @@ class SignUp extends React.Component {
                                         <label for="inputPassword">Mot de passe</label>
                                         <Field name="Password">
                                             {({input}) => (
-                                            <input type="password" {...input} class="form-control" id="inputPassword" required></input>
+                                            <input type="password" name="password" {...input} class="form-control" id="inputPassword" required></input>
                                             )}
                                         </Field>
                                     </div><hr />
                                     <div class="form-group">
                                         <label for="verifyInputPassword">Confirmer votre mot de passe</label>
-                                        <input type="password" class="form-control" id="verifyInputPassword" required></input>
+                                        <input type="password" name="confirm_password" class="form-control" id="verifyInputPassword" required></input>
                                     </div><hr />
                                     <button type="submit" class="btn btn-primary form_inscription_btn"
                                         
